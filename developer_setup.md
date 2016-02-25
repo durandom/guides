@@ -164,15 +164,18 @@ git fetch other_user
 ### Get the Rails environment up and running
 
 ```bash
-bin/setup                  # Installs dependencies, config, prepares database, etc
-bundle exec rake evm:start # Starts the ManageIQ EVM Application in the background
-bundle exec rails s        # Starts the application server
+# Install dependencies, config, prepares database, etc
+bin/setup                  
+# Start the ManageIQ EVM Application in the background
+# and workers to e.g. process queues or serve the web UI  
+bundle exec rake evm:start
 ```
 
 * You can now access the application at `http://localhost:3000`. The default username is `admin` with password `smartvm`.
 * There is also a minimal mode available to start the application with fewer services and workers for faster startup or
 targeted end-user testing. See the [minimal mode guide](developer_setup/minimal_mode.md) for details.
 * To run the test suites, see [the guide on that topic](developer_setup/running_test_suites.md).
+* To check the status, run `bundle exec rake evm:status`
 
 #### Some troubleshooting notes
 
